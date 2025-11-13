@@ -11,7 +11,8 @@ def generate_launch_description():
     This launch file starts:
     1. Camera capture node - captures from camera
     2. Pose detection node - processes camera stream for pose detection
-    3. Visualization grid node - displays multiple streams in a 2x2 grid
+    3. Pose skeleton node - creates skeleton visualization with pelvis at origin
+    4. Visualization grid node - displays multiple streams in a 2x2 grid
     """
     
     # Declare launch arguments
@@ -29,6 +30,7 @@ def generate_launch_description():
         parameters=[{
             'camera_id': LaunchConfiguration('camera_id'),
             'output_topic': 'camera/image_raw',
+            'visualization_topic': 'visualization/frame_1',
             'camera_info_topic': 'camera/camera_info',
             'namespace': '',
             'frame_id': 'camera_frame',
@@ -48,11 +50,26 @@ def generate_launch_description():
             'input_topic': 'camera/image_raw',
             'output_pose_topic': 'pose/detection',
             'output_image_topic': 'pose/image_annotated',
+            'visualization_topic': 'visualization/frame_4',  # Publish annotated image to frame_4
             'min_detection_confidence': 0.5,
             'min_tracking_confidence': 0.5,
             'model_complexity': 1,
             'enable_segmentation': False,
             'smooth_landmarks': True
+        }],
+        output='screen'
+    )
+    
+    # Pose skeleton node
+    pose_skeleton_node = Node(
+        package='h1_debug',
+        executable='pose_skeleton_node',
+        name='pose_skeleton',
+        parameters=[{
+            'pose_topic': 'pose/detection',
+            'visualization_topic': 'visualization/frame_2',
+            'image_width': 640,
+            'image_height': 480
         }],
         output='screen'
     )
@@ -75,5 +92,6 @@ def generate_launch_description():
         camera_id_arg,
         camera_capture_node,
         pose_detection_node,
+        pose_skeleton_node,
         visualization_grid_node
     ])

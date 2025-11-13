@@ -19,6 +19,7 @@ class CameraCaptureNode(Node):
         # Declare parameters
         self.declare_parameter('camera_id', 0)
         self.declare_parameter('output_topic', 'camera/image_raw')
+        self.declare_parameter('visualization_topic', 'visualization/frame_1')
         self.declare_parameter('camera_info_topic', 'camera/camera_info')
         self.declare_parameter('namespace', '')
         self.declare_parameter('frame_id', 'camera_frame')
@@ -29,6 +30,7 @@ class CameraCaptureNode(Node):
         # Get parameters
         camera_id = self.get_parameter('camera_id').value
         output_topic = self.get_parameter('output_topic').value
+        visualization_topic = self.get_parameter('visualization_topic').value
         camera_info_topic = self.get_parameter('camera_info_topic').value
         namespace = self.get_parameter('namespace').value
         self.frame_id = self.get_parameter('frame_id').value
@@ -39,6 +41,7 @@ class CameraCaptureNode(Node):
         # Add namespace to topics if provided
         if namespace:
             output_topic = f'{namespace}/{output_topic}'
+            visualization_topic = f'{namespace}/{visualization_topic}'
             camera_info_topic = f'{namespace}/{camera_info_topic}'
         
         # Initialize CV Bridge
@@ -64,6 +67,7 @@ class CameraCaptureNode(Node):
         
         # Create publishers
         self.image_pub = self.create_publisher(Image, output_topic, 10)
+        self.visualization_pub = self.create_publisher(Image, visualization_topic, 10)
         self.camera_info_pub = self.create_publisher(CameraInfo, camera_info_topic, 10)
         
         # Create timer for capturing frames
@@ -75,6 +79,7 @@ class CameraCaptureNode(Node):
         
         self.get_logger().info(f'Camera capture node started')
         self.get_logger().info(f'Publishing to: {output_topic}')
+        self.get_logger().info(f'Visualization: {visualization_topic}')
         self.get_logger().info(f'Camera info: {camera_info_topic}')
     
     def create_camera_info_msg(self):
@@ -125,6 +130,9 @@ class CameraCaptureNode(Node):
             image_msg.header.stamp = timestamp
             image_msg.header.frame_id = self.frame_id
             self.image_pub.publish(image_msg)
+            
+            # Also publish to visualization frame 1
+            self.visualization_pub.publish(image_msg)
         except Exception as e:
             self.get_logger().error(f'Error publishing image: {str(e)}')
         

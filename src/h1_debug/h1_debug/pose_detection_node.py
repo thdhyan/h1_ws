@@ -32,6 +32,7 @@ class PoseDetectionNode(Node):
         self.declare_parameter('input_topic', 'camera/image_raw')
         self.declare_parameter('output_pose_topic', 'pose/detection')
         self.declare_parameter('output_image_topic', 'pose/image_annotated')
+        self.declare_parameter('visualization_topic', 'visualization/frame_2')
         self.declare_parameter('min_detection_confidence', 0.5)
         self.declare_parameter('min_tracking_confidence', 0.5)
         self.declare_parameter('model_complexity', 1)  # 0, 1, or 2
@@ -42,6 +43,7 @@ class PoseDetectionNode(Node):
         input_topic = self.get_parameter('input_topic').value
         self.output_pose_topic = self.get_parameter('output_pose_topic').value
         self.output_image_topic = self.get_parameter('output_image_topic').value
+        self.visualization_topic = self.get_parameter('visualization_topic').value
         min_detection_confidence = self.get_parameter('min_detection_confidence').value
         min_tracking_confidence = self.get_parameter('min_tracking_confidence').value
         model_complexity = self.get_parameter('model_complexity').value
@@ -75,6 +77,7 @@ class PoseDetectionNode(Node):
         # Create publishers
         self.pose_pub = self.create_publisher(PoseDetection, self.output_pose_topic, 10)
         self.image_pub = self.create_publisher(Image, self.output_image_topic, 10)
+        self.visualization_pub = self.create_publisher(Image, self.visualization_topic, 10)
         
         self.get_logger().info(f'Pose detection node started')
         self.get_logger().info(f'Subscribing to: {input_topic}')
@@ -137,6 +140,9 @@ class PoseDetectionNode(Node):
                 annotated_msg = self.bridge.cv2_to_imgmsg(annotated_image, encoding='bgr8')
                 annotated_msg.header = msg.header
                 self.image_pub.publish(annotated_msg)
+                
+                # Also publish to visualization frame 2
+                self.visualization_pub.publish(annotated_msg)
             except Exception as e:
                 self.get_logger().error(f'Error publishing annotated image: {str(e)}')
                 

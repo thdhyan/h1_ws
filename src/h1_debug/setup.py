@@ -26,6 +26,7 @@ setup(
             'camera_capture_node = h1_debug.camera_capture_node:main',
             'visualization_grid_node = h1_debug.visualization_grid_node:main',
             'pose_detection_node = h1_debug.pose_detection_node:main',
+            'pose_skeleton_node = h1_debug.pose_skeleton_node:main',
         ],
     },
 )
