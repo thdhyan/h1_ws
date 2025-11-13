@@ -1,0 +1,32 @@
+digraph G {
+"World" -> "main_camera"[label=" Broadcaster: default_authority\nAverage rate: 60.207\nBuffer length: 4.833\nMost recent transform: 26105.434695\nOldest transform: 26100.601361\n"];
+"World" -> "pelvis"[label=" Broadcaster: default_authority\nAverage rate: 60.207\nBuffer length: 4.833\nMost recent transform: 26105.434695\nOldest transform: 26100.601361\n"];
+"pelvis" -> "left_hip_yaw_link"[label=" Broadcaster: default_authority\nAverage rate: 60.207\nBuffer length: 4.833\nMost recent transform: 26105.434695\nOldest transform: 26100.601361\n"];
+"pelvis" -> "right_hip_yaw_link"[label=" Broadcaster: default_authority\nAverage rate: 60.207\nBuffer length: 4.833\nMost recent transform: 26105.434695\nOldest transform: 26100.601361\n"];
+"pelvis" -> "torso_link"[label=" Broadcaster: default_authority\nAverage rate: 60.207\nBuffer length: 4.833\nMost recent transform: 26105.434695\nOldest transform: 26100.601361\n"];
+"left_hip_yaw_link" -> "left_hip_roll_link"[label=" Broadcaster: default_authority\nAverage rate: 60.207\nBuffer length: 4.833\nMost recent transform: 26105.434695\nOldest transform: 26100.601361\n"];
+"right_hip_yaw_link" -> "right_hip_roll_link"[label=" Broadcaster: default_authority\nAverage rate: 60.207\nBuffer length: 4.833\nMost recent transform: 26105.434695\nOldest transform: 26100.601361\n"];
+"torso_link" -> "d435_left_imager_link"[label=" Broadcaster: default_authority\nAverage rate: 60.207\nBuffer length: 4.833\nMost recent transform: 26105.434695\nOldest transform: 26100.601361\n"];
+"torso_link" -> "d435_rgb_module_link"[label=" Broadcaster: default_authority\nAverage rate: 60.207\nBuffer length: 4.833\nMost recent transform: 26105.434695\nOldest transform: 26100.601361\n"];
+"torso_link" -> "imu_link"[label=" Broadcaster: default_authority\nAverage rate: 60.207\nBuffer length: 4.833\nMost recent transform: 26105.434695\nOldest transform: 26100.601361\n"];
+"torso_link" -> "left_shoulder_pitch_link"[label=" Broadcaster: default_authority\nAverage rate: 60.207\nBuffer length: 4.833\nMost recent transform: 26105.434695\nOldest transform: 26100.601361\n"];
+"torso_link" -> "logo_link"[label=" Broadcaster: default_authority\nAverage rate: 60.207\nBuffer length: 4.833\nMost recent transform: 26105.434695\nOldest transform: 26100.601361\n"];
+"torso_link" -> "mid360_link"[label=" Broadcaster: default_authority\nAverage rate: 60.207\nBuffer length: 4.833\nMost recent transform: 26105.434695\nOldest transform: 26100.601361\n"];
+"torso_link" -> "right_shoulder_pitch_link"[label=" Broadcaster: default_authority\nAverage rate: 60.207\nBuffer length: 4.833\nMost recent transform: 26105.434695\nOldest transform: 26100.601361\n"];
+"left_hip_roll_link" -> "left_hip_pitch_link"[label=" Broadcaster: default_authority\nAverage rate: 60.207\nBuffer length: 4.833\nMost recent transform: 26105.434695\nOldest transform: 26100.601361\n"];
+"right_hip_roll_link" -> "right_hip_pitch_link"[label=" Broadcaster: default_authority\nAverage rate: 60.207\nBuffer length: 4.833\nMost recent transform: 26105.434695\nOldest transform: 26100.601361\n"];
+"left_shoulder_pitch_link" -> "left_shoulder_roll_link"[label=" Broadcaster: default_authority\nAverage rate: 60.207\nBuffer length: 4.833\nMost recent transform: 26105.434695\nOldest transform: 26100.601361\n"];
+"right_shoulder_pitch_link" -> "right_shoulder_roll_link"[label=" Broadcaster: default_authority\nAverage rate: 60.207\nBuffer length: 4.833\nMost recent transform: 26105.434695\nOldest transform: 26100.601361\n"];
+"left_hip_pitch_link" -> "left_knee_link"[label=" Broadcaster: default_authority\nAverage rate: 60.207\nBuffer length: 4.833\nMost recent transform: 26105.434695\nOldest transform: 26100.601361\n"];
+"right_hip_pitch_link" -> "right_knee_link"[label=" Broadcaster: default_authority\nAverage rate: 60.207\nBuffer length: 4.833\nMost recent transform: 26105.434695\nOldest transform: 26100.601361\n"];
+"left_shoulder_roll_link" -> "left_shoulder_yaw_link"[label=" Broadcaster: default_authority\nAverage rate: 60.207\nBuffer length: 4.833\nMost recent transform: 26105.434695\nOldest transform: 26100.601361\n"];
+"right_shoulder_roll_link" -> "right_shoulder_yaw_link"[label=" Broadcaster: default_authority\nAverage rate: 60.207\nBuffer length: 4.833\nMost recent transform: 26105.434695\nOldest transform: 26100.601361\n"];
+"left_knee_link" -> "left_ankle_link"[label=" Broadcaster: default_authority\nAverage rate: 60.207\nBuffer length: 4.833\nMost recent transform: 26105.434695\nOldest transform: 26100.601361\n"];
+"right_knee_link" -> "right_ankle_link"[label=" Broadcaster: default_authority\nAverage rate: 60.207\nBuffer length: 4.833\nMost recent transform: 26105.434695\nOldest transform: 26100.601361\n"];
+"left_shoulder_yaw_link" -> "left_elbow_link"[label=" Broadcaster: default_authority\nAverage rate: 60.207\nBuffer length: 4.833\nMost recent transform: 26105.434695\nOldest transform: 26100.601361\n"];
+"right_shoulder_yaw_link" -> "right_elbow_link"[label=" Broadcaster: default_authority\nAverage rate: 60.207\nBuffer length: 4.833\nMost recent transform: 26105.434695\nOldest transform: 26100.601361\n"];
+edge [style=invis];
+ subgraph cluster_legend { style=bold; color=black; label ="view_frames Result";
+"Recorded at time: 1763049239.9117706"[ shape=plaintext ] ;
+}->"World";
+}
