@@ -1,8 +1,6 @@
 from setuptools import find_packages, setup
-import os
-from glob import glob
 
-package_name = 'h1_debug'
+package_name = 'h1_ik'
 
 setup(
     name=package_name,
@@ -12,7 +10,6 @@ setup(
         ('share/ament_index/resource_index/packages',
             ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
-        (os.path.join('share', package_name, 'launch'), glob('launch/*.py')),
     ],
     install_requires=['setuptools'],
     zip_safe=True,
@@ -23,9 +20,6 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'camera_capture_node = h1_debug.camera_capture_node:main',
-            'visualization_grid_node = h1_debug.visualization_grid_node:main',
-            'pose_detection_node = h1_debug.pose_detection_node:main',
         ],
     },
 )

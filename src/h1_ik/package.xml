@@ -1,17 +1,11 @@
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-  <name>h1_debug</name>
+  <name>h1_ik</name>
   <version>0.0.0</version>
   <description>TODO: Package description</description>
   <maintainer email="thakk100@umn.edu">thakk100</maintainer>
   <license>TODO: License declaration</license>
-
-  <depend>rclpy</depend>
-  <depend>sensor_msgs</depend>
-  <depend>h1_msgs</depend>
-  <depend>cv_bridge</depend>
-  <depend>python3-opencv</depend>
 
   <test_depend>ament_copyright</test_depend>
   <test_depend>ament_flake8</test_depend>
